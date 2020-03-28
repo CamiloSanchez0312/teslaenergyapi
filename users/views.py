@@ -14,6 +14,7 @@ from django.shortcuts import render
 class UsuariosList(generics.ListAPIView):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
+    #permission_classes = (permissions.IsAuthenticated, )
 
 class UsuarioPkApi(generics.RetrieveUpdateDestroyAPIView):
     queryset = Usuario.objects.all()
