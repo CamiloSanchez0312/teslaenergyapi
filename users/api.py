@@ -2,6 +2,7 @@ from rest_framework import generics, permissions, filters
 from rest_framework.response import Response
 from .serializers import UsuarioSerializer
 from django.contrib.auth.models import User
+from .models import Usuario
 
 '''
     UserAPi
@@ -11,7 +12,7 @@ class UserAPI(generics.ListAPIView):
     permission_classes = [
         permissions.IsAuthenticated,
     ]
-    queryset = User.objects.all()
+    queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
     
 
