@@ -13,6 +13,7 @@ class UserAPI(generics.ListAPIView):
     ]
     queryset = User.objects.all()
     serializer_class = UsuarioSerializer
+    
 
 class UserByIdAPI(generics.RetrieveAPIView):
     lookup_field = 'pk'
@@ -38,3 +39,14 @@ class UserByUsernameAPI(generics.RetrieveAPIView):
     '''
     def get_object(self):
         return self.request.user '''
+
+class RegisterAPI(generics.GenericAPIView):
+    serializer_class = UsuarioSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+            "user":UsuarioSerializer(user,context=self.get_serializer_context()).data,
+        })

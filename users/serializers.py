@@ -4,23 +4,19 @@ from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import get_user_model
 
-class RolSelializer(serializers.ModelSerializer):
-    class Meta:
-        model = Usuario
-        fields = ('__all__')
-
 class UsuarioSerializer(serializers.ModelSerializer):
-    usuarios = RolSelializer(many = False)
     class Meta:
-        model = User 
+        model = Usuario 
         fields = (
-            'id','username', 'password', 'first_name', 'last_name' , 
-            'email','groups','is_active','is_superuser','usuarios'
+            'id','username','password' ,'first_name', 'last_name' , 
+            'email','groups','is_active','is_superuser','rol'
             )
+        ordering = ['-id']
         extra_kwars = {'password':{'write_only':True}}
+        
 
     def create(self, validated_data):
-        usuario = validated_data.pop('usuarios')
-        user = User.objects.create_user(**validated_data)
-        Usuario.objects.create(user=user, **usuario)
+        user = super().create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
         return user
