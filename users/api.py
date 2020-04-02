@@ -16,7 +16,7 @@ class UserAPI(generics.ListAPIView):
     serializer_class = UsuarioSerializer
     
 
-class UserByIdAPI(generics.RetrieveAPIView):
+class UserByIdAPI(generics.RetrieveUpdateAPIView): #tambien sirve para hacer PUT
     lookup_field = 'pk'
     permission_classes = [
         permissions.IsAuthenticated,
@@ -25,9 +25,9 @@ class UserByIdAPI(generics.RetrieveAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return User.objects.all()
+        return Usuario.objects.all()
 
-class UserByUsernameAPI(generics.RetrieveAPIView):
+class UserByUsernameAPI(generics.RetrieveUpdateAPIView): #tambien sirve para hacer PUT
     lookup_field = 'username'
     permission_classes = [
         permissions.IsAuthenticated,
@@ -36,7 +36,7 @@ class UserByUsernameAPI(generics.RetrieveAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return User.objects.all()
+        return Usuario.objects.all()
     '''
     def get_object(self):
         return self.request.user '''
@@ -51,3 +51,4 @@ class RegisterAPI(generics.GenericAPIView):
         return Response({
             "user":UsuarioSerializer(user,context=self.get_serializer_context()).data,
         })
+
