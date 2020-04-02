@@ -100,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', #si no funciona la instalada de psycopg2 -> hacer esto sudo apt install python-dev python3-dev
         'NAME': 'teslaenergy',
         'USER': 'postgres',
-        'PASSWORD': '24880312',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
     }
