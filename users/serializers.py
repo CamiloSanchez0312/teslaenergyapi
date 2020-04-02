@@ -11,7 +11,6 @@ class UsuarioSerializer(serializers.ModelSerializer):
             'id','username','password' ,'first_name', 'last_name' , 
             'email','groups','is_active','is_superuser','rol'
             )
-        ordering = ['-id']
         extra_kwars = {'password':{'write_only':True}}
         
 
