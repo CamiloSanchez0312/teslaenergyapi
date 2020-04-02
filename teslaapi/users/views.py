@@ -28,3 +28,15 @@ class UsuarioUsernameApi(generics.RetrieveUpdateDestroyAPIView):
 class UsuarioCreateApi(generics.CreateAPIView):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
+
+@api_view(['POST',])
+def usuario_view(request):
+
+    if request.method == 'POST':
+        serializer = UsuarioSerializer(data=request.data)
+        data = {}
+        if serializer.is_valid():
+            user = serializer.save()
+            data['response'] = "succesfully registered"
+            data['username'] = user.username
+        return Response(data)
