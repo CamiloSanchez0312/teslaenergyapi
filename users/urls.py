@@ -1,7 +1,5 @@
-from django.conf.urls import url 
-from users import views
-from .api import UserAPI,UserByIdAPI,UserByUsernameAPI,RegisterAPI
-from .viewsets import UsuarioViewSetsUsername,UsuariosAll
+from django.conf.urls import url
+from .api import UserAPI, UserByIdAPI, UserByUsernameAPI, RegisterAPI
 
 urlpatterns = [
     url(r'^$', UserAPI.as_view()),

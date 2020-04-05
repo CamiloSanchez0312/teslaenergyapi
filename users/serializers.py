@@ -6,14 +6,13 @@ from django.contrib.auth import get_user_model
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Usuario 
+        model = Usuario
         fields = (
-            'id','username','password' ,'first_name', 'last_name' , 
+            'id','username','password' ,'first_name', 'last_name' ,
             'email','groups','is_active','is_superuser','rol'
             )
         extra_kwars = {'password':{'write_only':True}}
         
-
     def create(self, validated_data):
         user = super().create(validated_data)
         user.set_password(validated_data['password'])

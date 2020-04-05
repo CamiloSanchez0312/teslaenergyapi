@@ -111,10 +111,13 @@ teslaenergyapi/__pycache__/
 teslaenergyapi/loginlogout/__pycache__/
 teslaenergyapi/loginlogout/migrations/__pycache__/
 users/__pycache__/
+users/migrations/
 users/migrations/__pycache__/
 clients/__pycache__/
+clients/migrations/
 clients/migrations/__pycache__/
 assets/__pycache__/
+assets/migrations/
 assets/migrations/__pycache__/
 
 .vscode/

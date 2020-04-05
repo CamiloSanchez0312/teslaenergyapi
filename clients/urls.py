@@ -1,6 +1,5 @@
-from django.conf.urls import url 
-from users import views
-from .api import ClienteRegisterAPI,ClienteListAPI,ClienteByCedulaAPI
+from django.conf.urls import url
+from .api import ClienteRegisterAPI, ClienteListAPI, ClienteByCedulaAPI
 
 urlpatterns = [
     url(r'^cliente/create/$',ClienteRegisterAPI.as_view()),
