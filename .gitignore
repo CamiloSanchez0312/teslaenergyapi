@@ -108,8 +108,6 @@ env/
 
 # Django Apps pycache directories:
 teslaenergyapi/__pycache__/
-teslaenergyapi/loginlogout/__pycache__/
-teslaenergyapi/loginlogout/migrations/__pycache__/
 users/__pycache__/
 users/migrations/
 users/migrations/__pycache__/

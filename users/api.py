@@ -1,10 +1,10 @@
-from rest_framework import generics, permissions, filters
+from rest_framework import generics, permissions, filters, views, status
 from rest_framework.response import Response
-from .serializers import UsuarioSerializer
+from .serializers import UsuarioSerializer, ReCaptchaSerializer
 from django.contrib.auth.models import User
 from .models import Usuario
 
-# Users's API
+# User's API
 
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = UsuarioSerializer
@@ -45,3 +45,16 @@ class UserByUsernameAPI(generics.RetrieveUpdateAPIView): #tambien sirve para hac
     def get_queryset(self):
         user = self.request.user
         return Usuario.objects.all()
+
+# reCAPTCHA's API
+
+class VerifyTokenAPI(views.APIView):
+    allowed_methods = ["POST"]
+    permission_classes = [
+        permissions.AllowAny,
+    ]
+    def post(self, request, *args, **kwargs):
+        serializer = ReCaptchaSerializer(data=request.data)
+        if serializer.is_valid():
+            return Response({'success': True}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

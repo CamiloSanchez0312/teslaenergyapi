@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^api/v1/usuarios/', include('users.urls')),
     url(r'^api/v1/clientes/', include('clients.urls')),
     url(r'^api/v1/assets/', include('assets.urls')),
-    url(r'^api/v1/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/auth-jwt/', obtain_jwt_token),
     url(r'^api/v1/auth-jwt-refresh/', refresh_jwt_token),
     url(r'^api/v1/auth-jwt-verify/', verify_jwt_token),

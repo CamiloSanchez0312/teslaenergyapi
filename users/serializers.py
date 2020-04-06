@@ -3,6 +3,7 @@ from .models import Usuario
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import get_user_model
+from recaptcha.fields import ReCaptchaField
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,9 +13,12 @@ class UsuarioSerializer(serializers.ModelSerializer):
             'email','groups','is_active','is_superuser','rol'
             )
         extra_kwars = {'password':{'write_only':True}}
-        
+
     def create(self, validated_data):
         user = super().create(validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+class ReCaptchaSerializer(serializers.Serializer):
+    recaptcha = ReCaptchaField()
