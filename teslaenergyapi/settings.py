@@ -16,18 +16,20 @@ import datetime
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'xkn_dk&nv^5unf5t!0mp%86e6+*bd0o)1s7foqtt_%-xdb0cn-'
 
+# reCAPTCHA secret key
+GR_CAPTCHA_SECRET_KEY = '6Lewz-YUAAAAAJyGAey3VPDdeBCIFOTXbrjZUbKT'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Allowed hosts in the API server
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -40,9 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'users',
     'clients',
-    'rest_framework.authtoken',
+    'assets',
+    'recaptcha',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +94,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'teslaenergyapi.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -98,10 +101,10 @@ DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', #si no funciona la instalada de psycopg2 -> hacer esto sudo apt install python-dev python3-dev
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'teslaenergy',
-        'USER': 'postgres',
-        'PASSWORD': '24880312',
+        'USER': 'teslaenergy',
+        'PASSWORD': 'teslaenergy',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -129,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-JWT_AUTH = { 
+JWT_AUTH = {
     'JWT_VERIFY': True,
     'JWT_VERIFY_EXPIRATION': True,
     'JWT_LEEWAY': 0,
@@ -137,7 +140,6 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -151,7 +153,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

@@ -4,7 +4,7 @@ from .serializers import ClienteSerializer
 from django.contrib.auth.models import User
 from .models import Cliente
 
-#API's de clientes
+# Client's API
 
 class ClienteRegisterAPI(generics.CreateAPIView):
     permission_classes = [
