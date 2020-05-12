@@ -23,6 +23,16 @@ class SubstationListAPI(generics.ListAPIView):
         serializer_class = SubstationSerializer(queryset, many=True)
         return Response(serializer_class.data)
 
+class SubstationByIdAPI(generics.RetrieveUpdateAPIView):
+    lookup_field = 'pk'
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    serializer_class = SubstationSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Substation.objects.all()
 
 # Transformer's API
 
@@ -43,6 +53,16 @@ class TransformerListAPI(generics.ListAPIView):
         serializer_class = TransformerSerializer(queryset, many=True)
         return Response(serializer_class.data)
 
+class TransformerByIdAPI(generics.RetrieveUpdateAPIView):
+    lookup_field = 'pk'
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    serializer_class = TransformerSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Transformer.objects.all()
 
 # ElectricMeter's API
 
@@ -62,3 +82,14 @@ class ElectricMeterListAPI(generics.ListAPIView):
         queryset = ElectricMeter.objects.all()
         serializer_class = ElectricMeterSerializer(queryset, many=True)
         return Response(serializer_class.data)
+
+class ElectricMeterByIdAPI(generics.RetrieveUpdateAPIView):
+    lookup_field = 'pk'
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    serializer_class = ElectricMeterSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return ElectricMeter.objects.all()
