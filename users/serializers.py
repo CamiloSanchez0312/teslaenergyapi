@@ -20,5 +20,13 @@ class UsuarioSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+class UsuarioRolSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = (
+            'id',
+            'rol',
+            )
+
 class ReCaptchaSerializer(serializers.Serializer):
     recaptcha = ReCaptchaField()

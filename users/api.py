@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions, filters, views, status
 from rest_framework.response import Response
-from .serializers import UsuarioSerializer, ReCaptchaSerializer
+from .serializers import UsuarioSerializer, ReCaptchaSerializer, UsuarioRolSerializer
 from django.contrib.auth.models import User
 from .models import Usuario
 
@@ -41,6 +41,18 @@ class UserByUsernameAPI(generics.RetrieveUpdateAPIView): #tambien sirve para hac
         permissions.IsAuthenticated,
     ]
     serializer_class = UsuarioSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Usuario.objects.all()
+
+class UserRolByUsernameAPI(generics.RetrieveAPIView): #Pedir el rol de un usuario dado su username
+    lookup_field = 'username'
+    permission_classes = [
+        #permissions.IsAuthenticated,
+        permissions.AllowAny,
+    ]
+    serializer_class = UsuarioRolSerializer
 
     def get_queryset(self):
         user = self.request.user
