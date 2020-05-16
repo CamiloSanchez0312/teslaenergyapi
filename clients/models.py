@@ -5,8 +5,9 @@ class Cliente(models.Model):
     first_name = models.CharField(max_length=30, null=False)
     last_name = models.CharField(max_length=30, null=False)
     email = models.EmailField(max_length=50, null=False)
-    # TYPES = (
-    #     ('CO','Corporativo'),
-    #     ('NA','Natural')
-    # )
-    # type = models.CharField(max_length=2, choices=TYPES, null=False, default="")
+    is_active = models.BooleanField(default=True)
+    TYPES = (
+         ('CO','Corporativo'),
+         ('NA','Natural')
+     )
+    type = models.CharField(max_length=2, choices=TYPES, null=False, default="")
