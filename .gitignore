@@ -117,5 +117,8 @@ clients/migrations/__pycache__/
 assets/__pycache__/
 assets/migrations/
 assets/migrations/__pycache__/
+consumo/__pycache__/
+consumo/migrations/
+consumo/migrations/__pycache__/
 
 .vscode/
