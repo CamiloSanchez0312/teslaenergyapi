@@ -20,3 +20,8 @@ class ElectricMeter(models.Model):
     longitude = models.DecimalField(max_digits=30, decimal_places=20, null=False)
     transformer = models.ForeignKey(Transformer, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
+
+class Mediciones(models.Model):
+    dateMeasure = models.DateField(auto_now=True)
+    totalMeasured = models.IntegerField()
+    meter = models.ForeignKey(ElectricMeter, on_delete=models.CASCADE)

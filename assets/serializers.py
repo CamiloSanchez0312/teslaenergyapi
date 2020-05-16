@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Substation, Transformer, ElectricMeter
+from .models import Substation, Transformer, ElectricMeter, Mediciones
 
 class SubstationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,3 +15,8 @@ class ElectricMeterSerializer(serializers.ModelSerializer):
     class Meta:
         model = ElectricMeter
         fields = ('id', 'name', 'latitude', 'longitude', 'is_active','transformer')
+
+class MedicionesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mediciones
+        fields = ('id','dateMeasure','totalMeasured','meter')
