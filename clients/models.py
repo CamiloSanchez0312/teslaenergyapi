@@ -11,3 +11,4 @@ class Cliente(models.Model):
          ('NA','Natural')
      )
     type = models.CharField(max_length=2, choices=TYPES, null=False, default="")
+    

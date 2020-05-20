@@ -7,6 +7,7 @@ from .models import Cliente
 # Client's API
 
 class ClienteRegisterAPI(generics.CreateAPIView):
+
     permission_classes = [
         permissions.IsAuthenticated,
     ]
