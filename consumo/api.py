@@ -19,3 +19,10 @@ class FacturaApi(generics.CreateAPIView):
     queryset = Factura.objects.all()
     serializer_class = FacturaSerializer
 
+class FacturaApiList(generics.ListAPIView): 
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    queryset = Factura.objects.all()
+    serializer_class = FacturaSerializer
+

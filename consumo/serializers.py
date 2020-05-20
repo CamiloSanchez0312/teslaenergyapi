@@ -8,7 +8,7 @@ class FacturaSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'dateGenerated',
-            'dateExpiry',
+            'expireDate',
             'amount',
             'totalConsumed',
             'consumo'
