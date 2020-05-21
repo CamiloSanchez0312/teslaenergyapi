@@ -120,5 +120,8 @@ assets/migrations/__pycache__/
 consumo/__pycache__/
 consumo/migrations/
 consumo/migrations/__pycache__/
+pagos/__pycache__/
+pagos/migrations/
+pagos/migrations/__pycache__/
 
 .vscode/

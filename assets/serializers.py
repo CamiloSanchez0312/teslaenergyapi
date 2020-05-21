@@ -20,3 +20,9 @@ class MedicionesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mediciones
         fields = ('id','dateMeasure','totalMeasured','meter')
+
+class MedicionesMeterSerializer(serializers.ModelSerializer):
+    meter = ElectricMeterSerializer()
+    class Meta:    #Join entre Mediciones y ElectricMeter
+        model = Mediciones
+        fields = ('id','dateMeasure','totalMeasured','meter')
