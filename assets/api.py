@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions, filters
 from rest_framework.response import Response
-from .serializers import SubstationSerializer, TransformerSerializer, ElectricMeterSerializer, MedicionesSerializer
+from .serializers import SubstationSerializer, TransformerSerializer, ElectricMeterSerializer, MedicionesSerializer, MedicionesMeterSerializer
 from django.contrib.auth.models import User
 from .models import Substation, Transformer, ElectricMeter, Mediciones
 
@@ -101,3 +101,10 @@ class MedicionesApi(generics.ListCreateAPIView):
     ]
     queryset = Mediciones.objects.all()
     serializer_class = MedicionesSerializer
+
+class MedicionesAPIMeter(generics.ListAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    queryset = Mediciones.objects.all()
+    serializer_class = MedicionesMeterSerializer

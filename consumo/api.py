@@ -26,3 +26,11 @@ class FacturaApiList(generics.ListAPIView):
     queryset = Factura.objects.all()
     serializer_class = FacturaSerializer
 
+class FacturaApiID(generics.RetrieveAPIView):
+    lookup_field = 'pk'
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    queryset = Factura.objects.all()
+    serializer_class = FacturaSerializer
+

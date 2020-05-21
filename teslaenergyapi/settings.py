@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'assets',
     'recaptcha',
     'consumo',
+    'pagos',
 ]
 
 MIDDLEWARE = [

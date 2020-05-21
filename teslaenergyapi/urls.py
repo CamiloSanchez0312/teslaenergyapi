@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^api/v1/clientes/', include('clients.urls')),
     url(r'^api/v1/assets/', include('assets.urls')),
     url(r'^api/v1/consumos/', include('consumo.urls')),
+    url(r'^api/v1/pagos/', include('pagos.urls')),
     url(r'^api/v1/auth-jwt/', obtain_jwt_token),
     url(r'^api/v1/auth-jwt-refresh/', refresh_jwt_token),
     url(r'^api/v1/auth-jwt-verify/', verify_jwt_token),

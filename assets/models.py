@@ -23,5 +23,5 @@ class ElectricMeter(models.Model):
 
 class Mediciones(models.Model):
     dateMeasure = models.DateField(auto_now=True)
-    totalMeasured = models.IntegerField()
+    totalMeasured = models.FloatField()
     meter = models.ForeignKey(ElectricMeter, on_delete=models.CASCADE)

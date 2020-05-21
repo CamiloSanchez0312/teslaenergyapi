@@ -6,7 +6,7 @@ from assets.models import ElectricMeter
 # Create your models here.
 class Consumo(models.Model): #mediante este modelo se le asigna un medidor a un cliente
     client = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    meter = models.OneToOneField(ElectricMeter, on_delete=models.CASCADE)
+    meter = models.OneToOneField(ElectricMeter, on_delete=models.CASCADE, unique=True)
 
 class Factura(models.Model):
     dateGenerated = models.DateField(auto_now=True)
