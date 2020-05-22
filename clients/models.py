@@ -1,7 +1,7 @@
 from django.db import models
 
 class Cliente(models.Model):
-    cedula = models.CharField(max_length=15, unique=True, null=False)
+    id = models.CharField(max_length=15, unique=True, null=False,primary_key=True)
     first_name = models.CharField(max_length=30, null=False)
     last_name = models.CharField(max_length=30, null=False)
     email = models.EmailField(max_length=50, null=False)

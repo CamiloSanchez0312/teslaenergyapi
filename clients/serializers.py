@@ -7,4 +7,4 @@ from django.contrib.auth import get_user_model
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields = ('cedula', 'first_name','last_name','email','is_active','type')
+        fields = ('id', 'first_name','last_name','email','is_active','type')

@@ -21,7 +21,7 @@ class ClienteListAPI(generics.ListAPIView):
     serializer_class = ClienteSerializer
 
 class ClienteByCedulaAPI(generics.RetrieveUpdateAPIView): #tambien sirve para hacer PUT
-    lookup_field = 'cedula'
+    lookup_field = 'id'
     permission_classes = [
         permissions.IsAuthenticated,
     ]
