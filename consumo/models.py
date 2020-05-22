@@ -10,7 +10,7 @@ class Consumo(models.Model): #mediante este modelo se le asigna un medidor a un 
 
 class Factura(models.Model):
     dateGenerated = models.DateField(auto_now=True)
-    #dateExpiry = models.DateField(null=True)
+    expireDate = models.DateField(default=datetime.date.today()+datetime.timedelta(days=9))
     #amount = models.FloatField(null=True)
     totalConsumed = models.FloatField()
     consumo = models.ForeignKey(Consumo, on_delete=models.CASCADE)
@@ -21,7 +21,7 @@ class Factura(models.Model):
         amo = round(self.totalConsumed*valorKWH,1) #un valor decimal
         return amo
 
-    @property
+    """ @property
     def expireDate(self):
         date = datetime.date.today()+datetime.timedelta(days=9)
-        return date
+        return date """
