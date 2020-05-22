@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
 from .models import Consumo, Factura
-from .serializers import ConsumoSerializer, FacturaSerializer
+from .serializers import ConsumoSerializer, FacturaSerializer, ConsumoMeterSerializer
 
 #Apis para Consumo
 class ConsumoApi(generics.CreateAPIView): 
@@ -9,6 +9,13 @@ class ConsumoApi(generics.CreateAPIView):
     ]
     queryset = Consumo.objects.all()
     serializer_class = ConsumoSerializer
+
+class ConsumoApiList(generics.ListAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    queryset = Consumo.objects.all()
+    serializer_class = ConsumoMeterSerializer
 
 
 #Apis para Factura
